@@ -4,7 +4,7 @@ using UIKit;
 using UniversalBeacon.Library;
 using UniversalBeacon.Library.Core.Interfaces;
 
-namespace BeaconReceiver.iOS
+namespace BluetoothMobileClient.iOS
 {
     [Register("AppDelegate")]
 

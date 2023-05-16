@@ -1,10 +1,10 @@
-﻿using BeaconReceiver.ViewModels;
-using BeaconReceiver.Views;
+﻿using BluetoothMobileClient.ViewModels;
+using BluetoothMobileClient.Views;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace BeaconReceiver
+namespace BluetoothMobileClient
 {
     public partial class AppShell : Xamarin.Forms.Shell
     {

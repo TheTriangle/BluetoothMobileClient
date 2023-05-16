@@ -11,15 +11,15 @@
     <PackageReference Include="Plugin.BLE" Version="2.1.3" />
     <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
     <PackageReference Include="UniversalBeaconLibrary" Version="3.2.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="OpenNETCF.Extensions">
       <HintPath>..\..\..\..\..\..\..\Users\visio\Downloads\universal-beacon-master (1)\universal-beacon-master\packages\opennetcf-extensions-standard.1.0.17160.0\lib\netstandard1.1\OpenNETCF.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="UniversalBeacon.Library.Core">
+    <Reference Include="BluetoothMobileClient.Library.Core">
       <HintPath>..\..\..\..\..\..\..\Users\visio\Downloads\universal-beacon-master (1)\universal-beacon-master\Library\UniversalBeacon.Library.Core\bin\Debug\netstandard1.3\UniversalBeacon.Library.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -28,5 +28,10 @@
     <Compile Update="App.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="ViewCells\" />
   </ItemGroup>
 </Project>

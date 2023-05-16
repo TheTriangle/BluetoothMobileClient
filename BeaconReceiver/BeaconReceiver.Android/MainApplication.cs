@@ -9,16 +9,12 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using BeaconReceiver.Droid.Services;
+using BluetoothConnectionLibrary.Android.Services;
 using Plugin.CurrentActivity;
 
-namespace BeaconReceiver.Droid
+namespace BluetoothMobileClient.Droid
 {
-#if DEBUG
     [Application(Debuggable = true)]
-#else
-[Application(Debuggable = false)]
-#endif
     public class MainApplication : Application
     {
         public MainApplication(IntPtr handle, JniHandleOwnership transer)
@@ -29,7 +25,7 @@ namespace BeaconReceiver.Droid
         public override void OnCreate()
         {
             base.OnCreate();
-            App.Init(new PermissionService());
+            App.Init(new PermissionService(), new BluetoothConnectionService());
             CrossCurrentActivity.Current.Init(this);
         }
     }

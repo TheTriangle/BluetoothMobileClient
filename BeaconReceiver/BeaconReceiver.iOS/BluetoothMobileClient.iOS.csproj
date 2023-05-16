@@ -65,10 +65,10 @@
   <ItemGroup>
     <Compile Include="CocoaBluetoothCentralDelegate.cs" />
     <Compile Include="CocoaBluetoothPacketProvider.cs" />
-    <Compile Include="FrameTemplateSelector.cs" />
     <Compile Include="iOSBluetoothPacketProvider.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\BluetoothConnectionService.cs" />
     <Compile Include="Services\PermissionService.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
@@ -153,9 +153,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\BeaconReceiver\BeaconReceiver.csproj">
-      <Project>{1C88431D-2D08-469F-9F8F-7419172B4C3B}</Project>
-      <Name>BeaconReceiver</Name>
+    <ProjectReference Include="..\BeaconReceiver\BluetoothMobileClient.csproj">
+      <Project>{12D50745-8F47-4C6B-AF7C-2D78552999DE}</Project>
+      <Name>BluetoothMobileClient</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

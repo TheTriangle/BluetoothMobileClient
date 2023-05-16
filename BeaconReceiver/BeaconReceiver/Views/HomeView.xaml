@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:BeaconReceiver"
-             x:Class="BeaconReceiver.Views.HomeView">
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <local:FrameTemplateSelector x:Key="FrameTemplateSelector" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+             xmlns:local="clr-namespace:BluetoothMobileClient"
+             x:Class="BluetoothMobileClient.Views.HomeView">
     <ContentPage.Content>
         <StackLayout Spacing="0">
             <BoxView BackgroundColor="#0089ff">
@@ -19,14 +14,20 @@
                                 iOS="40"/>
                 </BoxView.HeightRequest>
             </BoxView>
-            <Label Text="Universal Beacon Sample" TextColor="White" BackgroundColor="#0089ff" HorizontalTextAlignment="Center"/>
+            <Label Text="Bluetooth Mobile Client" TextColor="White" BackgroundColor="#0089ff" HorizontalTextAlignment="Center"/>
             <BoxView HeightRequest="20" BackgroundColor="#0089ff"/>
-            <ListView
-                ItemTemplate="{StaticResource FrameTemplateSelector}" 
-                ItemsSource="{Binding Beacons}"
-                SelectedItem="{Binding SelectedBeacon}"
-                HasUnevenRows="True">
-            </ListView>
+            <Label Text="Your MAC address: " />
+            <Editor x:Name="edMacAddress" IsReadOnly="true"></Editor>
+            
+            <Label Text="MAC address to connect to: " />
+            <Editor x:Name="edDesktopMacAddress"></Editor>
+
+            <Label Text="PIN for connection: " />
+            <Editor x:Name="edPIN"></Editor>
+
+            <Button Text="Connect" x:Name="btnConnect"></Button>
+            <Button Text="Disconnect" x:Name="btnDisconnect"></Button>
+            <Label Text="Received data: " x:Name="lblReceivedData"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:BeaconReceiver.Views"
-       Title="BeaconReceiver"
-       x:Class="BeaconReceiver.AppShell">
+       xmlns:local="clr-namespace:BluetoothMobileClient.Views"
+       Title="BluetoothMobileClient"
+       x:Class="BluetoothMobileClient.AppShell">
 
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
@@ -73,7 +73,7 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <MenuItem Text="Beacons" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
+    <MenuItem Text="BluetoothMobileClient" StyleClass="MenuItemLayoutStyle" Clicked="OnMenuItemClicked">
     </MenuItem>
 
     <!-- Optional Templates 

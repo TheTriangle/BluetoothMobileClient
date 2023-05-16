@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BeaconReceiver.Services
+namespace BluetoothMobileClient.Services
 {
     public interface IPermissionService
     {

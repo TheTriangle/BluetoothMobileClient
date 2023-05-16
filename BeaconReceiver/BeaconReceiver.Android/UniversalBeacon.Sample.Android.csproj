@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BeaconReceiver.Droid</RootNamespace>
-    <AssemblyName>BeaconReceiver.Android</AssemblyName>
+    <RootNamespace>BluetoothMobileClient.Droid</RootNamespace>
+    <AssemblyName>BluetoothMobileClient.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <AndroidApplication>true</AndroidApplication>
@@ -96,9 +96,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BeaconReceiver\BeaconReceiver.csproj">
+    <ProjectReference Include="..\BluetoothMobileClient\BluetoothMobileClient.csproj">
       <Project>{7F9A4EB5-C7E0-49E5-BB4E-D7B7E41C4429}</Project>
-      <Name>BeaconReceiver</Name>
+      <Name>BluetoothMobileClient</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Library\UniversalBeacon.Library.Android\UniversalBeacon.Library.Android.csproj">
       <Project>{6ADC54D4-3B9B-495E-A2B8-F9CF5FD623CE}</Project>

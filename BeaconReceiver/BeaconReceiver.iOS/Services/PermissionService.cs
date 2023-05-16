@@ -6,9 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UIKit;
-using BeaconReceiver.Services;
+using BluetoothMobileClient.Services;
 
-namespace BeaconReceiver.iOS.Services
+namespace BluetoothMobileClient.iOS.Services
 {
     public class PermissionService : IPermissionService
     {

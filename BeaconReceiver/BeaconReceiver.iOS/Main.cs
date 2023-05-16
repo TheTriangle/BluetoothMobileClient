@@ -1,7 +1,7 @@
-﻿using BeaconReceiver.iOS.Services;
+﻿using BluetoothMobileClient.iOS.Services;
 using UIKit;
 
-namespace BeaconReceiver.iOS
+namespace BluetoothMobileClient.iOS
 {
     public class Application
     {
@@ -10,7 +10,7 @@ namespace BeaconReceiver.iOS
         {
             // if you want to use a different Application Delegate class from "AppDelegate"
             // you can specify it here.
-            App.Init(new PermissionService());
+            App.Init(new PermissionService(), new BluetoothConnectionService());
             UIApplication.Main(args, null, "AppDelegate");
         }
     }

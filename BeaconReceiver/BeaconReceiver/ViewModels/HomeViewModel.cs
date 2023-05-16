@@ -7,22 +7,20 @@ using System.Threading.Tasks;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using UniversalBeacon.Library.Core.Entities;
-using BeaconReceiver.Models;
 using Xamarin.Essentials;
 using System.Reflection;
 using Xamarin.Forms.PlatformConfiguration;
 using System.Text;
+using Xamarin.Forms;
+using System.IO;
 
-namespace BeaconReceiver.ViewModels
+namespace BluetoothMobileClient.ViewModels
 {
-    public class HomeViewModel : INotifyPropertyChanged
+    public class HomeViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private BeaconService _service;
-        public ObservableCollection<Beacon> Beacons => _service?.Beacons;
-        private Beacon _selectedBeacon;
-        
+        bool connectOnDiscover = false;
+        string MAC;
+        string PIN;
         public async Task RequestPermissions()
         {
             RequestLocationPermission();
@@ -30,76 +28,62 @@ namespace BeaconReceiver.ViewModels
 
         private async Task RequestLocationPermission()
         {
-            App.permissionService.RequestPermissions(() => { StartBeaconService(); });
-            if (!App.permissionService.HasPermissions())
-            {
-                App.permissionService.RequestPermissions(() => {
-                    StartBeaconService();
-                });
-            }
+            App.permissionService.RequestPermissions(() => {
+                Console.WriteLine("Permissions received");
+            });
         }
 
-
-        private void StartBeaconService()
+        public async Task<bool> ConnectToDesktop(string MAC, string PIN)
         {
-            _service = RootWorkItem.Services.Get<BeaconService>();
-            if (_service == null)
-            {
-                _service = RootWorkItem.Services.AddNew<BeaconService>();
-                if (_service.Beacons != null) _service.Beacons.CollectionChanged += Beacons_CollectionChanged;
-                _service.Provider.AdvertisementPacketReceived += Provider_AdvertisementPacketReceived;
-            }
+            Console.WriteLine("Connecting to " + ParseMAC(MAC));
+            bool success = App.bluetoothConnectionService.ConnectToDevice(ParseMAC(MAC), PIN);
+            return success;
         }
 
-        void Provider_AdvertisementPacketReceived(object sender, UniversalBeacon.Library.Core.Interop.BLEAdvertisementPacketArgs e)
+        public void DisconnectDesktop(string MAC)
         {
-            Debug.WriteLine("Advertisement: ");
-            Debug.WriteLine("Manufacturer company id: ");
-            Debug.WriteLine(e.Data.Advertisement.ManufacturerData[0].CompanyId);
-            Debug.WriteLine("Data sections: " + e.Data.Advertisement.DataSections.Count);
-            foreach (var section in e.Data.Advertisement.DataSections)
-            {
-                Debug.WriteLine(ByteArrayToString(section.Data));
-            }
-            Debug.WriteLine("Service UUIDs: " + e.Data.Advertisement.ServiceUuids.Count);
-            foreach (var section in e.Data.Advertisement.ServiceUuids)
-            {
-                Debug.WriteLine(section.ToString());
-            }
-            Debug.WriteLine("end");
+            App.bluetoothConnectionService.DisconnectDevice(MAC);
         }
 
-        string ByteArrayToString(byte[] data)
+        string ParseMAC(string givenMAC)
         {
-            StringBuilder hex = new StringBuilder(data.Length * 2);
-            foreach (byte b in data)
-                hex.AppendFormat("{0:x2}", b);
-            return hex.ToString();
+            givenMAC = givenMAC.ToUpper();
+            if (givenMAC.Length == 17) return givenMAC;
+            return givenMAC.Substring(0, 2) + ':' + givenMAC.Substring(2, 2) + ':' + givenMAC.Substring(4, 2) + ':' + 
+                   givenMAC.Substring(6, 2) + ':' + givenMAC.Substring(8, 2) + ':' + givenMAC.Substring(10, 2);
         }
 
-        private void Beacons_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        internal void Communicate(Label lblReceivedData)
         {
-            Debug.WriteLine($"Beacons_CollectionChanged {sender} e {e}");
-            foreach (var beacon in Beacons)
+            Console.WriteLine("Start comm");
+            try
             {
-                Debug.WriteLine("RSSI: " + beacon.Rssi + " beacon: ");
-                foreach (var frame in beacon.BeaconFrames)
+                while (App.bluetoothConnectionService.IsDeviceConnected(MAC))
                 {
-                    Debug.WriteLine(ByteArrayToString(frame.Payload));
+                    byte[] buffer = new byte[2048]; // read in chunks of 2KB
+                    App.bluetoothConnectionService.InputStream.Read(buffer, 0, buffer.Length);
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            lblReceivedData.Text += System.Text.Encoding.UTF8.GetString(buffer) + "\n";
+                        });
+                    }
+                    Task.Delay(1000).Wait();
+                    byte[] message = System.Text.Encoding.UTF8.GetBytes("Hello from mobile!");
+                    Console.WriteLine("Hello sent");
+
+                    App.bluetoothConnectionService.OutputStream.Write(message, 0, message.Length);
+                    App.bluetoothConnectionService.OutputStream.Flush();
                 }
-            }
-        }
-
-        public Beacon SelectedBeacon
-        {
-            get => _selectedBeacon;
-            set
+            } catch (Exception ex)
             {
-                _selectedBeacon = value;
-                PropertyChanged.Fire(this, "SelectedBeacon");
+                Console.WriteLine(ex.Message);
             }
+            Console.WriteLine("Connection lost");
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                lblReceivedData.Text += "\nConnection lost.";
+            });
         }
-
-
     }
 }
