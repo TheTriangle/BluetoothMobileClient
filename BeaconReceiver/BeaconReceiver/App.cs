@@ -1,6 +1,7 @@
-﻿using BluetoothMobileClient.Services;
-using BluetoothMobileClient.Views;
+﻿using BluetoothMobileClient.Views;
 using Xamarin.Forms;
+using BluetoothConnectionLibrary;
+using BluetoothConnectionLibrary.Services;
 
 namespace BluetoothMobileClient
 {

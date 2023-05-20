@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BluetoothMobileClient.Services
+namespace BluetoothConnectionLibrary.Services
 {
     public interface IPermissionService
     {

@@ -9,7 +9,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
-using BluetoothMobileClient.Services;
+using BluetoothConnectionLibrary.Services;
 using Plugin.CurrentActivity;
 using System;
 using System.Collections.Generic;
@@ -17,11 +17,10 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 
-namespace BluetoothMobileClient.Droid.Services
+namespace BluetoothConnectionAndroidLibrary.Services
 {
-    internal class PermissionService : IPermissionService
+    public class PermissionService : IPermissionService
     {
         public bool HasPermissions()
         {

@@ -5,7 +5,7 @@ using System.IO;
 using System.Net.Sockets;
 using System.Text;
 
-namespace BluetoothMobileClient.Services
+namespace BluetoothConnectionLibrary.Services
 {
     public interface IBluetoothConnectionService
     {

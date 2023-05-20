@@ -86,14 +86,20 @@
     <Compile Include="MainApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="Services\BluetoothConnectionService.cs" />
-    <Compile Include="Services\PermissionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="UniversalBeacon.Sample.Android.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\BluetoothConnectionAndroidLibrary\BluetoothConnectionAndroidLibrary.csproj">
+      <Project>{4dac06b3-4281-4c1f-9f63-7cbd54c5a43a}</Project>
+      <Name>BluetoothConnectionAndroidLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\BluetoothConnectionLibrary\BluetoothConnectionLibrary.csproj">
+      <Project>{61812d24-4da9-4001-9f94-4cb6e9d8d1f8}</Project>
+      <Name>BluetoothConnectionLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BeaconReceiver\BluetoothMobileClient.csproj">
       <Project>{12D50745-8F47-4C6B-AF7C-2D78552999DE}</Project>
       <Name>BluetoothMobileClient</Name>

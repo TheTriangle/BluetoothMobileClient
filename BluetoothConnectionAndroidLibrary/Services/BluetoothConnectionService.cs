@@ -1,27 +1,10 @@
-﻿using Android.App;
-using Android.Bluetooth;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
+﻿using Android.Bluetooth;
 using Android.Util;
-using Android.Views;
-using Android.Widget;
-using AndroidX.LocalBroadcastManager.Content;
-using BluetoothMobileClient.Services;
-using Java.IO;
-using Java.Lang.Reflect;
-using Java.Lang;
+using BluetoothConnectionLibrary.Services;
 using Java.Util;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.Sockets;
-using System.Text;
-using Object = Java.Lang.Object;
 
-namespace BluetoothMobileClient.Droid.Services
+namespace BluetoothConnectionAndroidLibrary.Services
 {
     public class BluetoothConnectionService : IBluetoothConnectionService
     {

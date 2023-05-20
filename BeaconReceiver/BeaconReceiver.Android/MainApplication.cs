@@ -9,7 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using BluetoothConnectionLibrary.Android.Services;
+using BluetoothConnectionAndroidLibrary.Services;
 using Plugin.CurrentActivity;
 
 namespace BluetoothMobileClient.Droid

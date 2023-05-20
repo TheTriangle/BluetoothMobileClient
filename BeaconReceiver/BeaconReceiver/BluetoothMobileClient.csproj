@@ -34,4 +34,8 @@
     <Folder Include="Models\" />
     <Folder Include="ViewCells\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\BluetoothConnectionLibrary\BluetoothConnectionLibrary.csproj" />
+  </ItemGroup>
 </Project>
