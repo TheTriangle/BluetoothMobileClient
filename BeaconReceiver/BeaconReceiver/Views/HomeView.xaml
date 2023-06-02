@@ -27,7 +27,10 @@
 
             <Button Text="Connect" x:Name="btnConnect"></Button>
             <Button Text="Disconnect" x:Name="btnDisconnect"></Button>
-            <Label Text="Received data: " x:Name="lblReceivedData"/>
+            <Label Text="Message to send: "/>
+            <Editor x:Name="edMessage"></Editor>
+            <Button Text="Send" x:Name="btnSend"></Button>
+            <Label x:Name="lblLog" Text="Log:"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

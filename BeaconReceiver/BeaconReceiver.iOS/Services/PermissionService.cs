@@ -6,11 +6,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UIKit;
-using BluetoothMobileClient.Services;
 
 namespace BluetoothMobileClient.iOS.Services
 {
-    public class PermissionService : IPermissionService
+    public class PermissionService// : IPermissionService
     {
         Action _bluetoothAction = null; //Optional, if you wanted to notify user that you have performed action (allow or deny) on the permission request dialog
 

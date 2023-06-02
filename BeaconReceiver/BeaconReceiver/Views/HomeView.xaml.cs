@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
+using BluetoothConnectionLibrary.Communication;
 using BluetoothMobileClient.ViewModels;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.Permissions.Abstractions;
@@ -50,30 +51,44 @@ namespace BluetoothMobileClient.Views
             await _viewModel.RequestPermissions();
             btnConnect.Clicked += BtnConnect_Clicked;
             btnDisconnect.Clicked += BtnDisconnect_Clicked;
+            btnSend.Clicked += BtnSend_Clicked;
+        }
+
+        private void Messages_OnMessageReceived(string Message)
+        {
+            Console.WriteLine("message received: " + Message);
+            Device.BeginInvokeOnMainThread(() => { lblLog.Text += "\n" + Message; });
+            
+        }
+
+        private void BtnSend_Clicked(object sender, EventArgs e)
+        {
+            if (_viewModel.connection != null)
+                _viewModel.connection.Messages.SendMessage(edMessage.Text);
         }
 
         private void BtnDisconnect_Clicked(object sender, EventArgs e)
         {
-            _viewModel.DisconnectDesktop(edDesktopMacAddress.Text);
+            _viewModel.Disconnect();
         }
 
         private async void BtnConnect_Clicked(object sender, System.EventArgs e)
         {
             btnConnect.IsEnabled = false;
-            bool connectionSuccessful = await _viewModel.ConnectToDesktop(edDesktopMacAddress.Text, edPIN.Text);
+
+            bool connectionSuccessful = _viewModel.InitializeConnection(edDesktopMacAddress.Text, edPIN.Text);
             if (!connectionSuccessful)
             {
                 btnConnect.IsEnabled = true;
                 return;
             }
-            new Thread(() =>
-            {
-                _viewModel.Communicate(lblReceivedData);
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    btnConnect.IsEnabled = true;
-                });
-            }).Start();
+            _viewModel.connection.OnConnectionLost += Connection_OnConnectionLost;
+            _viewModel.connection.Messages.OnMessageReceived += Messages_OnMessageReceived;
+        }
+
+        private void Connection_OnConnectionLost()
+        {
+            Device.BeginInvokeOnMainThread(() => { btnConnect.IsEnabled = true; });
         }
     }
 }

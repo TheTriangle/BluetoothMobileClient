@@ -1,5 +1,4 @@
-﻿using BluetoothMobileClient.Services;
-using Foundation;
+﻿using Foundation;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using UIKit;
 
 namespace BluetoothMobileClient.iOS.Services
 {
-    internal class BluetoothConnectionService : IBluetoothConnectionService
+    internal class BluetoothConnectionService// : IBluetoothConnectionService
     {
         public Stream InputStream => throw new NotImplementedException();
 

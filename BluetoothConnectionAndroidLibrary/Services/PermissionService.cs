@@ -4,11 +4,13 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.V4.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
 using AndroidX.Core.App;
 using AndroidX.Core.Content;
+using BluetoothConnectionAndroidLibrary.Services;
 using BluetoothConnectionLibrary.Services;
 using Plugin.CurrentActivity;
 using System;
@@ -17,7 +19,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ContextCompat = AndroidX.Core.Content.ContextCompat;
 
+[assembly: Xamarin.Forms.Dependency(typeof(PermissionService))]
 namespace BluetoothConnectionAndroidLibrary.Services
 {
     public class PermissionService : IPermissionService

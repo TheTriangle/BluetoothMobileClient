@@ -8,18 +8,14 @@ namespace BluetoothMobileClient
     public partial class App : Application
     {
         private readonly HomeView _viewInstance;
-        public static IPermissionService permissionService;
-        public static IBluetoothConnectionService bluetoothConnectionService;
         public App()
         {
 
             _viewInstance = new HomeView();
             MainPage = _viewInstance;
         }
-        public static void Init(IPermissionService permissionServiceImpl, IBluetoothConnectionService connectionServiceImpl)
+        public static void Init()
         {
-            App.permissionService = permissionServiceImpl;
-            App.bluetoothConnectionService = connectionServiceImpl;
         }
 
 

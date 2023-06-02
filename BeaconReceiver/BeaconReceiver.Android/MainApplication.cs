@@ -25,7 +25,7 @@ namespace BluetoothMobileClient.Droid
         public override void OnCreate()
         {
             base.OnCreate();
-            App.Init(new PermissionService(), new BluetoothConnectionService());
+            App.Init();
             CrossCurrentActivity.Current.Init(this);
         }
     }

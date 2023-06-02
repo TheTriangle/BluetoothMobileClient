@@ -2,7 +2,6 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Support.V4.App;
-using AndroidX.Core.App;
 using OpenNETCF.IoC;
 using Plugin.CurrentActivity;
 using Plugin.Permissions;
@@ -23,13 +22,6 @@ namespace BluetoothMobileClient.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App()); 
-        }
-
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-        {
-            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 

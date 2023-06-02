@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BluetoothMobileClient", "Be
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothConnectionAndroidLibrary", "BluetoothConnectionAndroidLibrary\BluetoothConnectionAndroidLibrary.csproj", "{4DAC06B3-4281-4C1F-9F63-7CBD54C5A43A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothConnectionLibrary", "BluetoothConnectionLibrary\BluetoothConnectionLibrary.csproj", "{61812D24-4DA9-4001-9F94-4CB6E9D8D1F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BluetoothConnectionLibrary", "BluetoothConnectionLibrary\BluetoothConnectionLibrary.csproj", "{61812D24-4DA9-4001-9F94-4CB6E9D8D1F8}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ConnectionLibrary", "ConnectionLibrary\ConnectionLibrary.shproj", "{48F99990-3CB7-4E46-BDAB-D804EB956D44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -107,5 +109,8 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2CE2555D-D5E8-4918-B70B-110388258EE1}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ConnectionLibrary\ConnectionLibrary.projitems*{48f99990-3cb7-4e46-bdab-d804eb956d44}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal
