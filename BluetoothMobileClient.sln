@@ -15,6 +15,8 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ConnectionLibrary", "Connec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothMobileClient.iOS", "BluetoothMobileClient.iOS\BluetoothMobileClient.iOS.csproj", "{A740B3C8-CF29-4F74-A13E-CBBE7D8CC581}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothConnectionIOSLibrary", "BluetoothConnectionIOSLibrary\BluetoothConnectionIOSLibrary.csproj", "{D095E2F9-9A99-4A65-867B-126161DF92D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,8 +98,21 @@ Global
 		{A740B3C8-CF29-4F74-A13E-CBBE7D8CC581}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
 		{A740B3C8-CF29-4F74-A13E-CBBE7D8CC581}.Release|iPhone.ActiveCfg = Release|iPhone
 		{A740B3C8-CF29-4F74-A13E-CBBE7D8CC581}.Release|iPhone.Build.0 = Release|iPhone
+		{A740B3C8-CF29-4F74-A13E-CBBE7D8CC581}.Release|iPhone.Deploy.0 = Release|iPhone
 		{A740B3C8-CF29-4F74-A13E-CBBE7D8CC581}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{A740B3C8-CF29-4F74-A13E-CBBE7D8CC581}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Release|iPhone.Build.0 = Release|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{D095E2F9-9A99-4A65-867B-126161DF92D6}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

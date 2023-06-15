@@ -26,6 +26,7 @@ namespace BluetoothMobileClient.Views
             InitializeComponent();
             _viewModel = new HomeViewModel();
             SetMacAddress();
+            Console.WriteLine("constructor succeeded");
             BindingContext = _viewModel;
         }
 
