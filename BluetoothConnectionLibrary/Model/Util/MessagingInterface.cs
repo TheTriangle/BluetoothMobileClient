@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.BLE.Abstractions.Contracts;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,35 +16,27 @@ namespace BluetoothConnectionLibrary.Utils
         public delegate void MessageReceived(string Message);
         public event MessageReceived OnMessageReceived;
 
-        Stream inputStream, outputStream;
-        int bufferSize = 2048;
         string beginMessageToken = "<beginMessage>";
         string endMessageToken = "<endMessage>";
+        ICharacteristic characteristic;
 
-        public MessagingInterface(Stream inputStream, Stream outputStream)
+        public MessagingInterface(ICharacteristic characteristic)
         {
-            this.inputStream = inputStream;
-            this.outputStream = outputStream;
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-                try
-                {
-                    ListenForMessages();
-                }
-                catch (Exception) { }
-            }).Start();
-
+            this.characteristic = characteristic;
+            characteristic.ValueUpdated += Characteristic_ValueUpdated;
         }
 
+        private void Characteristic_ValueUpdated(object sender, Plugin.BLE.Abstractions.EventArgs.CharacteristicUpdatedEventArgs e)
+        {
+            ListenForMessages();
+        }
 
         void ListenForMessages()
         {
-            StreamReader inputReader = new StreamReader(inputStream);
             string receivedText = "";
             while (true)
             {
-                receivedText += Encoding.UTF8.GetString(new byte[] { (byte)inputReader.Read() });
+                receivedText += Encoding.UTF8.GetString(characteristic.ReadAsync().Result);
                 while (receivedText.Contains(endMessageToken))
                 {
                     OnMessageReceived.Invoke(receivedText.Substring(
@@ -56,9 +49,7 @@ namespace BluetoothConnectionLibrary.Utils
 
         public void SendMessage(string message)
         {
-            StreamWriter outputWriter = new StreamWriter(outputStream);
-            outputWriter.Write(beginMessageToken +  message + endMessageToken);
-            outputWriter.Flush();
+            characteristic.WriteAsync(Encoding.UTF8.GetBytes(beginMessageToken +  message + endMessageToken));
         }
     }
 }

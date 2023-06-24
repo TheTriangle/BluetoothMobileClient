@@ -77,7 +77,7 @@ namespace BluetoothMobileClient.Views
         {
             btnConnect.IsEnabled = false;
 
-            bool connectionSuccessful = _viewModel.InitializeConnection(edDesktopMacAddress.Text, edPIN.Text);
+            bool connectionSuccessful = await _viewModel.InitializeConnection(edDesktopMacAddress.Text, edPIN.Text);
             if (!connectionSuccessful)
             {
                 btnConnect.IsEnabled = true;

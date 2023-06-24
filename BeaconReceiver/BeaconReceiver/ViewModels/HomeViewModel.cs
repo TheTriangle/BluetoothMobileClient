@@ -31,10 +31,10 @@ namespace BluetoothMobileClient.ViewModels
             RequestLocationPermission();
         }
 
-        public bool InitializeConnection(string MAC, string PIN)
+        public async Task<bool> InitializeConnection(string MAC, string PIN)
         {
             connection = new Connection(MAC, PIN);
-            return connection.Connect();
+            return await connection.Connect();
         }
 
         public void Disconnect()
