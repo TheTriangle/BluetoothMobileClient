@@ -1,5 +1,4 @@
-﻿using BluetoothConnectionAndroidLibrary.Services;
-using BluetoothConnectionLibrary.Services;
+﻿using BluetoothConnectionLibrary.Services;
 using CoreBluetooth;
 using System.Diagnostics;
 using System;
@@ -7,9 +6,10 @@ using System.IO;
 using System.Threading.Tasks;
 using Foundation;
 using System.Linq;
+using BluetoothConnectionLibrary.iOS.Services;
 
 [assembly: Xamarin.Forms.Dependency(typeof(BluetoothConnectionService))]
-namespace BluetoothConnectionAndroidLibrary.Services
+namespace BluetoothConnectionLibrary.iOS.Services
 {
     public class BluetoothConnectionService : IBluetoothConnectionService
     {

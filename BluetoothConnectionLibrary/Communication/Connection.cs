@@ -29,6 +29,7 @@ namespace BluetoothConnectionLibrary.Communication
             this.MAC = MAC;
             this.PIN = PIN;
             bluetoothConnectionService = DependencyService.Get<IBluetoothConnectionService>();
+            Console.WriteLine("Constructor service null: " + (bluetoothConnectionService == null));
         }
 
         public bool Connect()

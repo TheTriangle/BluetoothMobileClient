@@ -92,9 +92,9 @@
     <None Include="UniversalBeacon.Sample.Android.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BluetoothConnectionAndroidLibrary\BluetoothConnectionAndroidLibrary.csproj">
+    <ProjectReference Include="..\..\BluetoothConnectionAndroidLibrary\BluetoothConnectionLibrary.Android.csproj">
       <Project>{4dac06b3-4281-4c1f-9f63-7cbd54c5a43a}</Project>
-      <Name>BluetoothConnectionAndroidLibrary</Name>
+      <Name>BluetoothConnectionLibrary.Android</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\BluetoothConnectionLibrary\BluetoothConnectionLibrary.csproj">
       <Project>{61812d24-4da9-4001-9f94-4cb6e9d8d1f8}</Project>

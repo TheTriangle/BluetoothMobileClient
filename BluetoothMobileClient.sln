@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothMobileClient.Andro
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BluetoothMobileClient", "BeaconReceiver\BeaconReceiver\BluetoothMobileClient.csproj", "{12D50745-8F47-4C6B-AF7C-2D78552999DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothConnectionAndroidLibrary", "BluetoothConnectionAndroidLibrary\BluetoothConnectionAndroidLibrary.csproj", "{4DAC06B3-4281-4C1F-9F63-7CBD54C5A43A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothConnectionLibrary.Android", "BluetoothConnectionAndroidLibrary\BluetoothConnectionLibrary.Android.csproj", "{4DAC06B3-4281-4C1F-9F63-7CBD54C5A43A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BluetoothConnectionLibrary", "BluetoothConnectionLibrary\BluetoothConnectionLibrary.csproj", "{61812D24-4DA9-4001-9F94-4CB6E9D8D1F8}"
 EndProject
@@ -15,7 +15,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ConnectionLibrary", "Connec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothMobileClient.iOS", "BluetoothMobileClient.iOS\BluetoothMobileClient.iOS.csproj", "{A740B3C8-CF29-4F74-A13E-CBBE7D8CC581}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothConnectionIOSLibrary", "BluetoothConnectionIOSLibrary\BluetoothConnectionIOSLibrary.csproj", "{D095E2F9-9A99-4A65-867B-126161DF92D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothConnectionLibrary.iOS", "BluetoothConnectionIOSLibrary\BluetoothConnectionLibrary.iOS.csproj", "{D095E2F9-9A99-4A65-867B-126161DF92D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -144,6 +144,12 @@
       <Project>{12d50745-8f47-4c6b-af7c-2d78552999de}</Project>
       <Name>BluetoothMobileClient</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BluetoothConnectionIOSLibrary\BluetoothConnectionLibrary.iOS.csproj">
+      <Project>{D095E2F9-9A99-4A65-867B-126161DF92D6}</Project>
+      <Name>BluetoothConnectionLibrary.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
