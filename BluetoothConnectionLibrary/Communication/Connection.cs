@@ -28,19 +28,13 @@ namespace BluetoothConnectionLibrary.Communication
             }
             this.MAC = MAC;
             this.PIN = PIN;
-            var platform = CrossDeviceInfo.Current.Platform;
-            switch (platform)
-            {
-                case Platform.iOS:
-                    break;
-                case Platform.Android:
-                    bluetoothConnectionService = DependencyService.Get<IBluetoothConnectionService>();
-                    break;
-            }
+            bluetoothConnectionService = DependencyService.Get<IBluetoothConnectionService>();
         }
 
         public bool Connect()
         {
+            Console.WriteLine("bluetoothConnectionService is null: " + (bluetoothConnectionService == null));
+            if (bluetoothConnectionService == null) return false;
             bool success = bluetoothConnectionService.ConnectToDevice(ConnectionUtils.ParseMAC(MAC), PIN);
             RegisterConnectionLostListener();
             if (success)
