@@ -19,44 +19,52 @@ namespace BluetoothConnectionLibrary.iOS.Services
         public EventHandler<CBPeripheralEventArgs> DiscoveredDevice;
         public EventHandler StateChanged;
 
-        public Stream InputStream => throw new NotImplementedException();
+        public Stream InputStream { get; set; }
 
-        public Stream OutputStream => throw new NotImplementedException();
+        public Stream OutputStream { get; set; }
 
         public BluetoothConnectionService()
         {
+            //Console.WriteLine("Constructor^^^");
             this.manager.DiscoveredPeripheral += this.DiscoveredPeripheral;
             this.manager.UpdatedState += this.UpdatedState;
-            _ = Scan(10000);
+            _ = Scan(100000);
+            ////Console.WriteLine("Constructorvvv");
         }
 
         public void Dispose()
         {
+            //Console.WriteLine("Dispose^^^");
             this.manager.DiscoveredPeripheral -= this.DiscoveredPeripheral;
             this.manager.UpdatedState -= this.UpdatedState;
             this.StopScan();
+            //Console.WriteLine("Disposevvv");
         }
 
-        public async Task Scan(int scanDuration, string serviceUuid = "")
+        public async Task Scan(int scanDuration, string serviceUuid = null)
         {
             Debug.WriteLine("Scanning started");
             var uuids = string.IsNullOrEmpty(serviceUuid)
                 ? new CBUUID[0]
                 : new[] { CBUUID.FromString(serviceUuid) };
-            this.manager.ScanForPeripherals(uuids);
-
+            this.manager.ScanForPeripherals(new CBUUID[0]);
+            Debug.WriteLine("Awaiting scan");
             await Task.Delay(scanDuration);
+            Debug.WriteLine("Stopping scan");
             this.StopScan();
+            //Console.WriteLine("Scanvvv");
         }
 
         public void StopScan()
         {
+            Debug.WriteLine("Stopping scan^^^");
             this.manager.StopScan();
-            Debug.WriteLine("Scanning stopped");
+            Debug.WriteLine("Stopping scanvvv");
         }
 
         public async Task ConnectTo(CBPeripheral peripheral)
         {
+            //Console.WriteLine("Connectto^^^");
             var taskCompletion = new TaskCompletionSource<bool>();
             var task = taskCompletion.Task;
             EventHandler<CBPeripheralEventArgs> connectedHandler = (s, e) =>
@@ -78,21 +86,26 @@ namespace BluetoothConnectionLibrary.iOS.Services
             {
                 this.manager.ConnectedPeripheral -= connectedHandler;
             }
+            //Console.WriteLine("Connecttovvv");
         }
 
         public void Disconnect(CBPeripheral peripheral)
         {
+            //Console.WriteLine("Disconnect^^^");
             this.manager.CancelPeripheralConnection(peripheral);
             Debug.WriteLine($"Device {peripheral.Name} disconnected");
+            //Console.WriteLine("Disconnectvvv");
         }
 
         public CBPeripheral[] GetConnectedDevices(string serviceUuid)
         {
+            //Console.WriteLine("getconnectedooo");
             return this.manager.RetrieveConnectedPeripherals(new[] { CBUUID.FromString(serviceUuid) });
         }
 
         public async Task<CBService> GetService(CBPeripheral peripheral, string serviceUuid)
         {
+            //Console.WriteLine("getservice^^^");
             var service = this.GetServiceIfDiscovered(peripheral, serviceUuid);
             if (service != null)
             {
@@ -119,14 +132,17 @@ namespace BluetoothConnectionLibrary.iOS.Services
             finally
             {
                 peripheral.DiscoveredService -= handler;
+                //Console.WriteLine("getservicevvv");
             }
         }
 
         public CBService GetServiceIfDiscovered(CBPeripheral peripheral, string serviceUuid)
         {
+            //Console.WriteLine("GetServiceifd");
             serviceUuid = serviceUuid.ToLowerInvariant();
             return peripheral.Services
                 ?.FirstOrDefault(x => x.UUID?.Uuid?.ToLowerInvariant() == serviceUuid);
+            //Console.WriteLine("GetServiceifd exited");
         }
 
         public async Task<CBCharacteristic[]> GetCharacteristics(CBPeripheral peripheral, CBService service, int scanTime)
@@ -188,6 +204,7 @@ namespace BluetoothConnectionLibrary.iOS.Services
 
         private void DiscoveredPeripheral(object sender, CBDiscoveredPeripheralEventArgs args)
         {
+            Debug.WriteLine($"Discovered periferal!");
             var device = $"{args.Peripheral.Name} - {args.Peripheral.Identifier?.Description}";
             Debug.WriteLine($"Discovered {device}");
             this.DiscoveredDevice?.Invoke(sender, new CBPeripheralEventArgs(args.Peripheral));
@@ -195,17 +212,20 @@ namespace BluetoothConnectionLibrary.iOS.Services
 
         private void UpdatedState(object sender, EventArgs args)
         {
+            Debug.WriteLine($"Updated state!");
             Debug.WriteLine($"State = {this.manager.State}");
             this.StateChanged?.Invoke(sender, args);
         }
 
         private async Task WaitForTaskWithTimeout(Task task, int timeout)
         {
+            //Console.WriteLine("WaitForTaskWithTimeout");
             await Task.WhenAny(task, Task.Delay(ConnectionTimeout));
             if (!task.IsCompleted)
             {
                 throw new TimeoutException();
             }
+            //Console.WriteLine("WaitForTaskWithTimeout exited");
         }
 
         public bool ConnectToDevice(string MAC, string PIN)

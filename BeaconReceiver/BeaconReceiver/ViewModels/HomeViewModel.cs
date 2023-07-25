@@ -20,34 +20,19 @@ namespace BluetoothMobileClient.ViewModels
 {
     public class HomeViewModel
     {
-        bool connectOnDiscover = false;
-        string MAC;
-        string PIN;
-        public Connection connection;
-
-
         public async Task RequestPermissions()
         {
             RequestLocationPermission();
         }
 
-        public bool InitializeConnection(string MAC, string PIN)
-        {
-            connection = new Connection(MAC, PIN);
-            return connection.Connect();
-        }
-
-        public void Disconnect()
-        {
-            if (connection != null)
-                connection.Disconnect();
-        }
 
         private async Task RequestLocationPermission()
         {
+            Console.WriteLine("Requesting permissions");
             PermissionManager.RequestPermissions(() => {
                 Console.WriteLine("Permissions received");
             });
+            Console.WriteLine("Requesting permissions method exit");
         }
     }
 }

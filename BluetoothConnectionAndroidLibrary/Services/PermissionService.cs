@@ -41,14 +41,14 @@ namespace BluetoothConnectionAndroidLibrary.Services
                 (ContextCompat.CheckSelfPermission(CrossCurrentActivity.Current.Activity,
                 Android.Manifest.Permission.BluetoothAdmin) == Permission.Granted));
 
-            return //ContextCompat.CheckSelfPermission(CrossCurrentActivity.Current.Activity,
-                //Android.Manifest.Permission.BluetoothScan) == Permission.Granted &&
+            return ContextCompat.CheckSelfPermission(CrossCurrentActivity.Current.Activity,
+                Android.Manifest.Permission.BluetoothScan) == Permission.Granted &&
                 ContextCompat.CheckSelfPermission(CrossCurrentActivity.Current.Activity,
                 Android.Manifest.Permission.AccessFineLocation) == Permission.Granted &&
                 ContextCompat.CheckSelfPermission(CrossCurrentActivity.Current.Activity,
                 Android.Manifest.Permission.AccessCoarseLocation) == Permission.Granted &&
-                //ContextCompat.CheckSelfPermission(CrossCurrentActivity.Current.Activity,
-                //Android.Manifest.Permission.BluetoothConnect) == Permission.Granted &&
+                ContextCompat.CheckSelfPermission(CrossCurrentActivity.Current.Activity,
+                Android.Manifest.Permission.BluetoothConnect) == Permission.Granted &&
                 //ContextCompat.CheckSelfPermission(CrossCurrentActivity.Current.Activity,
                 //Android.Manifest.Permission.BluetoothPrivileged) == Permission.Granted &&
                 ContextCompat.CheckSelfPermission(CrossCurrentActivity.Current.Activity,

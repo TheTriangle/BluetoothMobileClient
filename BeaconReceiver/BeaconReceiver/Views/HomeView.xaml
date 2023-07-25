@@ -19,11 +19,8 @@
             <Label Text="Your MAC address: " />
             <Editor x:Name="edMacAddress" IsReadOnly="true"></Editor>
             
-            <Label Text="MAC address to connect to: " />
-            <Editor x:Name="edDesktopMacAddress"></Editor>
-
-            <Label Text="PIN for connection: " />
-            <Editor x:Name="edPIN"></Editor>
+            <Label Text="Service ID to connect to: " />
+            <Editor x:Name="edServiceID" Text="00000000-0000-0000-0000-000000000000"></Editor>
 
             <Button Text="Connect" x:Name="btnConnect"></Button>
             <Button Text="Disconnect" x:Name="btnDisconnect"></Button>

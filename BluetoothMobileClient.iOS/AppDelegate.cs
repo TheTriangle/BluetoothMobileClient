@@ -11,6 +11,7 @@ public class AppDelegate : FormsApplicationDelegate
     {
         Xamarin.Forms.Forms.Init();
         Xamarin.Forms.DependencyService.Register<BluetoothConnectionService>();
+        Xamarin.Forms.DependencyService.Register<PermissionService>();
 
         LoadApplication(new App());
 

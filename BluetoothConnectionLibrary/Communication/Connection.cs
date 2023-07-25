@@ -1,6 +1,4 @@
 ﻿using BluetoothConnectionLibrary.Services;
-using BluetoothConnectionLibrary.Util;
-using BluetoothConnectionLibrary.Utils;
 using Plugin.DeviceInfo;
 using Plugin.DeviceInfo.Abstractions;
 using System;
@@ -18,7 +16,6 @@ namespace BluetoothConnectionLibrary.Communication
         IBluetoothConnectionService bluetoothConnectionService;
         public delegate void ConnectionLost();
         public event ConnectionLost OnConnectionLost;
-        public MessagingInterface Messages { get; set; }
 
         public Connection(string MAC, string PIN)
         {
@@ -32,33 +29,26 @@ namespace BluetoothConnectionLibrary.Communication
             Console.WriteLine("Constructor service null: " + (bluetoothConnectionService == null));
         }
 
-        public bool Connect()
-        {
-            Console.WriteLine("bluetoothConnectionService is null: " + (bluetoothConnectionService == null));
-            if (bluetoothConnectionService == null) return false;
-            bool success = bluetoothConnectionService.ConnectToDevice(ConnectionUtils.ParseMAC(MAC), PIN);
-            RegisterConnectionLostListener();
-            if (success)
-            {
-                Messages = new MessagingInterface(bluetoothConnectionService.InputStream, bluetoothConnectionService.OutputStream);
-            }
-            return success;
-        }
-
         void RegisterConnectionLostListener()
         {
+            //Console.WriteLine("RegisterConnectionLostListener ^^^");
             new Thread(() =>
             {
+                //Console.WriteLine("NewThreadStart ^^^");
                 Thread.CurrentThread.IsBackground = true;
+                //Console.WriteLine("NewThreadStart vvv");
                 while (true)
                 {
                     if (!IsConnected())
                     {
+                        //Console.WriteLine("Connection lost ^^^");
                         OnConnectionLost?.Invoke();
+                        //Console.WriteLine("Connection lost vvv");
                         return;
                     }
                 }
             }).Start();
+            //Console.WriteLine("RegisterConnectionLostListener vvv");
         }
 
         public void Disconnect()
