@@ -8,7 +8,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using BluetoothConnectionLibrary.Communication;
 using BluetoothMobileClient.Models;
 using BluetoothMobileClient.ViewModels;
 using Plugin.BLE;

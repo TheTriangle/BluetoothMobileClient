@@ -14,7 +14,6 @@ using System.Text;
 using Xamarin.Forms;
 using System.IO;
 using BluetoothConnectionLibrary.Permissions;
-using BluetoothConnectionLibrary.Communication;
 
 namespace BluetoothMobileClient.ViewModels
 {
