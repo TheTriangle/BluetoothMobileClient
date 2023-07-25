@@ -34,5 +34,22 @@
     <string>Assets.xcassets/AppIcon.appiconset</string>
     <key>CFBundleIdentifier</key>
     <string>com.yourcompany.BluetoothMobileClient</string>
+    <key>UIBackgroundModes</key>
+    <array>
+      <string>bluetooth-central</string>
+
+      <string>bluetooth-peripheral</string>
+    </array>
+
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>Connecting to systola desktop client</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Background search for systola desktop client</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Connecting to systola desktop client</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Connecting to systola desktop client</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Connecting to systola desktop client</string>
   </dict>
 </plist>

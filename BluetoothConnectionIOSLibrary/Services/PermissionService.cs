@@ -1,5 +1,4 @@
-﻿
-using BluetoothConnectionIOSLibrary.Services;
+﻿using BluetoothConnectionLibrary.iOS.Services;
 using BluetoothConnectionLibrary.Services;
 using CoreBluetooth;
 using CoreFoundation;
@@ -7,7 +6,7 @@ using System;
 using UIKit;
 
 [assembly: Xamarin.Forms.Dependency(typeof(PermissionService))]
-namespace BluetoothConnectionIOSLibrary.Services
+namespace BluetoothConnectionLibrary.iOS.Services
 {
     public class PermissionService : IPermissionService
     {

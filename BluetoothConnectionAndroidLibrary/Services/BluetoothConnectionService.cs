@@ -1,12 +1,12 @@
 ﻿using Android.Bluetooth;
 using Android.Util;
-using BluetoothConnectionAndroidLibrary.Services;
+using BluetoothConnectionLibrary.Android.Services;
 using BluetoothConnectionLibrary.Services;
 using Java.Util;
 using System.IO;
 
 [assembly: Xamarin.Forms.Dependency(typeof(BluetoothConnectionService))]
-namespace BluetoothConnectionAndroidLibrary.Services
+namespace BluetoothConnectionLibrary.Android.Services
 {
     public class BluetoothConnectionService : IBluetoothConnectionService
     {
