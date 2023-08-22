@@ -62,6 +62,15 @@ namespace BluetoothConnectionAndroidLibrary.Services
                 Manifest.Permission.BluetoothConnect, Manifest.Permission.Bluetooth,
                 Manifest.Permission.BluetoothAdmin, Manifest.Permission.BluetoothPrivileged };
             ActivityCompat.RequestPermissions(CrossCurrentActivity.Current.Activity, permissions, 1);
+            if (!HasPermissions())
+            {
+                var intent = new Intent(Android.Provider.Settings.ActionApplicationDetailsSettings);
+                intent.AddFlags(ActivityFlags.NewTask);
+                string package_name = "com.companyname.bluetoothmobileclient";
+                var uri = Android.Net.Uri.FromParts("package", package_name, null);
+                intent.SetData(uri);
+                Application.Context.StartActivity(intent);
+            }
             while (!HasPermissions())
             {
                 Thread.Sleep(100);
